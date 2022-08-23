@@ -6,6 +6,8 @@
 
 Пока макеты дефолтные - https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1
 
+Задеплоен на Netlify - https://astonishing-valkyrie-1a706b.netlify.app/
+
 ## Установка
 
 - `npm install` — установка пакетов,
