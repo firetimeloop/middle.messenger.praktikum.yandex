@@ -1,0 +1,22 @@
+.chats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 310px;
+  border-right: 1px solid #000;
+  height: 100%;
+}
+
+.message {
+  background: #EFEFEF;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.chat-history {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
