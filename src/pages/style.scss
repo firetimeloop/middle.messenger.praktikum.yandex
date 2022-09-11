@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap');
 
+@import url(../styles/colors.scss);
+
 @import url(../components/error-description/error-description.scss);
 @import url(../components/auth-form/auth-form.scss);
 @import url(../components/link/link.scss);
@@ -16,7 +18,7 @@
 body {
   margin: 0;
   font-family: 'Inter';
-  color: #1E1E1E;
+  color: var(--main-font-color);
   font-weight: 500;
 }
 

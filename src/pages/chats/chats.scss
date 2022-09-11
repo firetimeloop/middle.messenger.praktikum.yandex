@@ -1,14 +1,16 @@
+@import url(../../styles/colors.scss);
+
 .chats {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 310px;
-  border-right: 1px solid #000;
+  border-right: 1px solid var(--black);
   height: 100%;
 }
 
 .message {
-  background: #EFEFEF;
+  background: var(--main-background-color);
   border-radius: 5px;
   text-align: center;
 }

@@ -1,3 +1,5 @@
+@import url(../../styles/colors.scss);
+
 .error-description {
   text-align: center;
 }
@@ -18,7 +20,6 @@
 .error-description__link {
   font-size: 11px;
   line-height: 11px;
-  color: #3369F3;
+  color: var(--primary-color);
   text-decoration: none;
 }
-

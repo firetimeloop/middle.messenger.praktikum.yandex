@@ -1,11 +1,12 @@
+@import url(../../styles/colors.scss);
+
 .link {
   font-size: 11px;
   line-height: 11px;
-  color: #3369F3;
+  color: var(--primary-color);
   text-decoration: none;
-
+  
   &_red {
-    color: #FF0000;
+    color: var(--red-link-color);
   }
 }
-

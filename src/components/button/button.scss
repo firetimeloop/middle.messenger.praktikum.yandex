@@ -1,7 +1,9 @@
+@import url(../../styles/colors.scss);
+
 .button {
-  background: #3369F3;
+  background: var(--primary-color);
   border-radius: 8px;
-  color: #FFFFFF;
+  color: var(--white);
   font-family: 'Inter';
   font-size: 13px;
   line-height: 13px;
@@ -12,4 +14,3 @@
   cursor: pointer;
   max-width: 280px;
 }
-

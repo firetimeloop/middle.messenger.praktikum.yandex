@@ -1,3 +1,5 @@
+@import url(../../styles/colors.scss);
+
 .wrapper {
   display: flex;
   justify-content: center;
@@ -11,7 +13,7 @@
   align-items: center;
   width: 100%;
   max-width: 510px;
-  background: #FFFFFF;
+  background: var(--white);
   padding: 50px 30px 30px;
 }
 
@@ -24,11 +26,11 @@
 
 .user-form__avatar {
   border-radius: 50%;
-  background: #EFEFEF;
+  background: var(--main-background-color);
   justify-content: center;
   align-items: center;
   font-size: 50px;
-  color: #CDCDCD;
+  color: var(--avatar-text-color);
   
   display: grid;
 }
@@ -50,9 +52,9 @@
   font-size: 13px;
   line-height: 14px;
   text-align: center;
-  color: #FFF;
+  color: var(--white);
   opacity: 0;
-  background: #000000;
+  background: var(--black);
   display: flex;
   grid-area: 1/1;
   width: 130px;
@@ -89,7 +91,7 @@
   display: flex;
   width: 100%;
   gap: 8px;
-  border-bottom: 1px solid #EAEAEA;
+  border-bottom: 1px solid var(--back-button-border-color);
   padding: 0;
   padding-bottom: 10px;
   justify-content: space-between;
@@ -110,12 +112,8 @@
   font-weight: 500;
   font-size: 13px;
   line-height: 13px;
-  color: #999;
+  color: var(--form-label-color);
   text-align: right;
-
-  &:focus {
-    outline: none;
-  }
 }
 
 .user-form__links {
