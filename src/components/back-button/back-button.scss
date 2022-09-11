@@ -1,0 +1,22 @@
+@import url(../../styles/colors.scss);
+
+.back-button-wrapper {
+  height: 100%;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--back-button-background-color);
+  border-right: 1px solid var(--back-button-border-color);
+}
+
+.back-button {
+  width: 28px;
+  height: 28px;
+  background: var(--primary-color);
+  border: none;
+  color: var(--white);
+  border-radius: 50%;
+  font-weight: 600;
+  cursor: pointer;
+}

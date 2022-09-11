@@ -1,0 +1,27 @@
+---
+id: "root" 
+fields: [
+    {
+        label: "Логин",
+        type: "text",
+        error: "Неверный логин",
+        name: "login"
+    },
+    {
+        label: "Пароль",
+        type: "password",
+        error: "Неверный пароль",
+        name: "password"
+    }
+]
+---
+<html>
+    <head>
+        <link rel="stylesheet" href="./style.scss">
+    </head>
+    <body>
+        <main class="root" id="{{ id }}">
+            {{> auth-form title="Вход" buttonText="Войти" link="#" linkText="Нет аккаунта?" }}
+        </main>
+    </body>
+</html>

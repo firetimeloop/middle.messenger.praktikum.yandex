@@ -1,0 +1,18 @@
+<form class="auth-form">
+  <div class="auth-form__header">
+    <h1 class="auth-form__title">{{ title }}</h1>
+    <div class="auth-form__fields">
+      {{#each fields}}
+        <div class="auth-form__field">
+          <label for="{{ this.name }}" class="auth-form__field-label">{{ this.label }}</label>
+          <input class="auth-form__field-input" type="{{ this.type }}" placeholder="{{ this.label }}" name="{{ this.name }}" id="{{ this.name }}" />
+          <span class="auth-form__field-error">{{ this.error }}</span>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  <div class="auth-form__footer">
+    {{> button this }}
+    {{> link this }}
+  </div>
+</form>
