@@ -1,10 +1,10 @@
-@import url(../../styles/colors.scss);
+@import url("../../styles/colors.scss");
 
 .button {
   background: var(--primary-color);
   border-radius: 8px;
   color: var(--white);
-  font-family: 'Inter';
+  font-family: Inter, sans-serif;
   font-size: 13px;
   line-height: 13px;
   border: none;

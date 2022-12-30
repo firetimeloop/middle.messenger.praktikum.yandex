@@ -1,0 +1,5 @@
+/dist
+**/*.min.js
+/node_modules 
+.eslintrc.json
+/.parcel-cache
