@@ -18,8 +18,8 @@ export default class FormFields extends Block {
         class: 'auth-form__field',
         regex: '^[a-zA-Z0-9-_.]+@[a-zA-Z]+.[a-zA-Z]+$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Неверно указан email'),
+          blur: validateField('Неверно указан email'),
         },
       }),
     });
@@ -35,8 +35,8 @@ export default class FormFields extends Block {
         class: 'auth-form__field',
         regex: '^[a-zA-Z_][a-zA-Z0-9-_]{2,19}$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Невалидный логин'),
+          blur: validateField('Невалидный логин'),
         },
       }),
     });
@@ -52,8 +52,8 @@ export default class FormFields extends Block {
         class: 'auth-form__field',
         regex: '^[A-ZА-Я][a-zA-Zа-яА-Я-]*$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Неверно указано имя'),
+          blur: validateField('Неверно указано имя'),
         },
       }),
     });
@@ -69,8 +69,8 @@ export default class FormFields extends Block {
         class: 'auth-form__field',
         regex: '^[A-ZА-Я][a-zA-Zа-яА-Я-]*$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Неверно указана фамилия'),
+          blur: validateField('Неверно указана фамилия'),
         },
       }),
     });
@@ -86,8 +86,8 @@ export default class FormFields extends Block {
         class: 'auth-form__field',
         regex: '^[+]?[0-9]{10,15}$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Неверно указан телефон'),
+          blur: validateField('Неверно указан телефон'),
         },
       }),
     });
@@ -103,8 +103,8 @@ export default class FormFields extends Block {
         class: 'auth-form__field',
         regex: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,40}$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Невалидный пароль'),
+          blur: validateField('Невалидный пароль'),
         },
       }),
     });
@@ -120,8 +120,8 @@ export default class FormFields extends Block {
         class: 'auth-form__field',
         regex: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,40}$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Невалидный пароль'),
+          blur: validateField('Невалидный пароль'),
         },
       }),
     });

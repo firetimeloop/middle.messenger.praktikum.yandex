@@ -18,8 +18,8 @@ export default class FormFields extends Block {
         class: 'user-form__field',
         regex: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,40}$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Неверно указан пароль'),
+          blur: validateField('Неверно указан пароль'),
         },
       }),
     });
@@ -35,8 +35,8 @@ export default class FormFields extends Block {
         class: 'user-form__field',
         regex: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,40}$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Неверно указан пароль'),
+          blur: validateField('Неверно указан пароль'),
         },
       }),
     });
@@ -53,8 +53,8 @@ export default class FormFields extends Block {
         class: 'user-form__field',
         regex: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,40}$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Неверно указан пароль'),
+          blur: validateField('Неверно указан пароль'),
         },
       }),
     });

@@ -4,6 +4,7 @@
 @import url("../components/Button/Button.scss");
 @import url("../components/AuthForm/AuthForm.scss");
 @import url("../pages/chats/Chats.scss");
+@import url("../pages/Home/Home.scss");
 @import url("../pages/Login/Login.scss");
 @import url("../pages/UserSettings/UserSettings.scss");
 
@@ -25,8 +26,4 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
-
-  &_withGap {
-    gap: 20px;
-  }
 }

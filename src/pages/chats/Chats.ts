@@ -17,8 +17,8 @@ export default class ChatsPage extends Block {
         class: 'message',
         regex: '.+',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Сообщение не может быть пустым'),
+          blur: validateField('Сообщение не может быть пустым'),
         },
       }),
       events: {

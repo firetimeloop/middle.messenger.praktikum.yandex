@@ -9,11 +9,14 @@ const submitForm = (evt: Event) => {
     document.querySelectorAll('[data-regex]:not([data-regex=""])'),
   ) as HTMLInputElement[];
 
-  elements.forEach((element) => validateField(element));
+  elements.forEach((element) => validateField()(element));
 
-  const isValid = elements.every((element) => validateField(element));
+  const isValidForm = elements.map((element) => {
+    const { isValid } = validateField()(element);
+    return isValid;
+  }).every((isValid) => isValid);
 
-  if (!isValid) {
+  if (!isValidForm) {
     return;
   }
 

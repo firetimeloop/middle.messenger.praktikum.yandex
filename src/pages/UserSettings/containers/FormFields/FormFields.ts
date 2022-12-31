@@ -18,8 +18,8 @@ export default class FormFields extends Block {
         class: 'user-form__field',
         regex: '^[a-zA-Z0-9-_.]+@[a-zA-Z]+.[a-zA-Z]+$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Неверно указан email'),
+          blur: validateField('Неверно указан email'),
         },
       }),
     });
@@ -35,8 +35,8 @@ export default class FormFields extends Block {
         class: 'user-form__field',
         regex: '^[a-zA-Z_][a-zA-Z0-9-_]{2,19}$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Неверно указан логин'),
+          blur: validateField('Неверно указан логин'),
         },
       }),
     });
@@ -52,8 +52,8 @@ export default class FormFields extends Block {
         class: 'user-form__field',
         regex: '^[A-ZА-Я][a-zA-Zа-яА-Я-]*$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Неверно указано имя'),
+          blur: validateField('Неверно указано имя'),
         },
       }),
     });
@@ -69,20 +69,20 @@ export default class FormFields extends Block {
         class: 'user-form__field',
         regex: '^[A-ZА-Я][a-zA-Zа-яА-Я-]*$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Неверно указана фамилия'),
+          blur: validateField('Неверно указана фамилия'),
         },
       }),
     });
     this.children.formFieldChatName = new FormField({
       label: 'Имя в чате',
-      name: 'chat_name',
+      name: 'display_name',
       error: '',
       class: 'user-form__field',
       input: new Input({
         label: 'Имя в чате',
         type: 'text',
-        name: 'chat_name',
+        name: 'display_name',
         class: 'user-form__field',
       }),
     });
@@ -99,8 +99,8 @@ export default class FormFields extends Block {
         class: 'user-form__field',
         regex: '^[+]?[0-9]{10,15}$',
         events: {
-          focus: validateField,
-          blur: validateField,
+          focus: validateField('Неверно указан телефон'),
+          blur: validateField('Неверно указан телефон'),
         },
       }),
     });

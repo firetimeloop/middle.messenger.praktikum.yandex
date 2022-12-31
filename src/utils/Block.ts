@@ -2,7 +2,7 @@
 import { nanoid } from 'nanoid';
 import EventBus from './EventBus';
 
-abstract class Block {
+abstract class Block<T extends Record<string, any> = Record<string, unknown>> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -12,7 +12,7 @@ abstract class Block {
 
   public id = nanoid(6);
 
-  protected props: any;
+  protected props: T;
 
   private eventBus: () => EventBus;
 
@@ -32,7 +32,7 @@ abstract class Block {
 
     this.children = children;
 
-    this.props = this._makePropsProxy(props);
+    this.props = this._makePropsProxy(props) as T;
 
     this.initChildren();
 
@@ -46,7 +46,7 @@ abstract class Block {
   protected initChildren() {}
 
   _getChildrenAndProps(childrenAndProps: any) {
-    const props: Record<string, any> = {};
+    const props: Record<string, unknown> = {};
     const children: Record<string, Block> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
@@ -61,7 +61,7 @@ abstract class Block {
   }
 
   _addEvents() {
-    const { events = {} } = this.props as { events: Record<string, () =>void> };
+    const { events = {} } = this.props as unknown as { events: Record<string, () =>void> };
 
     Object.entries(events).forEach(([event, handler]) => {
       this._element?.addEventListener(event, handler);
@@ -69,7 +69,7 @@ abstract class Block {
   }
 
   _removeEvents() {
-    const { events = {} } = this.props as { events: Record<string, () =>void> };
+    const { events = {} } = this.props as unknown as { events: Record<string, () =>void> };
 
     Object.entries(events).forEach(([event, handler]) => {
       this._element?.removeEventListener(event, handler);
@@ -177,7 +177,7 @@ abstract class Block {
     return this._element;
   }
 
-  _makePropsProxy(props: Record<string, unknown>) {
+  _makePropsProxy(props: Record<string, any>) {
     const self = this;
 
     return new Proxy(props, {
