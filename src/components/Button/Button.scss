@@ -1,0 +1,20 @@
+@import url("../../styles/colors.scss");
+
+.button {
+  background: var(--primary-color);
+  border-radius: 8px;
+  color: var(--white);
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  line-height: 13px;
+  border: none;
+  width: 100%;
+  min-height: 38px;
+  font-weight: 500;
+  cursor: pointer;
+  max-width: 280px;
+}
+
+.button_with-margin {
+  margin: 12px 0;
+}
