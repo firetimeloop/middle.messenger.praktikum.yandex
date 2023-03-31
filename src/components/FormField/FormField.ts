@@ -5,10 +5,11 @@ import template from './FormField.hbs';
 interface FormFieldProps {
   label: string;
   name: string;
-  error: string;
+  error?: string;
   class: string;
   input: Input;
   additionalClass?: string;
+  value?: string;
 }
 
 export default class FormField extends Block {

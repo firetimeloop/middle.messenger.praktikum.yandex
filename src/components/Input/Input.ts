@@ -7,6 +7,7 @@ interface InputProps {
   type: string;
   class: string;
   regex?: string;
+  value?: string;
   events?: {
     focus?: (event: Event & { target: HTMLInputElement }) => void;
     blur?: (event: Event & { target: HTMLInputElement }) => void;

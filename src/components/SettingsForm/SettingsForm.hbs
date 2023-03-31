@@ -1,10 +1,22 @@
 <form class="user-form">
-    <div class="user-form__avatar-upload">
-    <label for="avatar" class="user-form__avatar">
-        <p class="user-form__avatar-background">&#128444;</p>
-        <p class="user-form__avatar-tooltip">Поменять аватар</p>
-    </label>
-    <input class="user-form__avatar-input" id="avatar" name="avatar" type="file" {{ avatarDisabled }}/>
+    {{#if avatar}}
+    <div
+        class="user-form__avatar-upload {{ avatarDisabled }}"
+        style="background: url('https://ya-praktikum.tech/api/v2/resources{{ avatar }}'); background-size: cover"
+    >
+    {{else}}
+    <div
+        class="user-form__avatar-upload {{ avatarDisabled }}"
+    >
+    {{/if}}
+        <label for="avatar" class="user-form__avatar {{ avatarDisabled }}">
+                {{#if avatar}}
+                {{else}}
+                    <p class="user-form__avatar-background">&#128444;</p>
+                {{/if}}
+            <p class="user-form__avatar-tooltip">Поменять аватар</p>
+        </label>
+        <input class="user-form__avatar-input" id="avatar" name="avatar" type="file" {{ avatarDisabled }}/>
     </div>
     <h1 class="user-form__title">{{ title }}</h1>
     {{{ formFields }}}

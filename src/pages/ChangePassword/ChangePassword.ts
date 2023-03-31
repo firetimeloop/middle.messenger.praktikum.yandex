@@ -4,7 +4,11 @@ import template from './ChangePassword.hbs';
 import SettingsForm from '../../components/SettingsForm';
 import FormFields from './containers/FormFields';
 import submitForm from '../../utils/submitForm';
+import router from '../../utils/Router';
+import { UpdatePasswordData } from './api/ChangePasswordAPI';
+import changePasswordController from './controllers/ChangePasswordController';
 
+export type UpdatePasswordDataWithConfirmation = UpdatePasswordData & {newPassword_confirm: string}
 export default class ChangePasswordPage extends Block {
   initChildren() {
     this.children.settingsForm = new SettingsForm({
@@ -17,7 +21,18 @@ export default class ChangePasswordPage extends Block {
         class: 'user-form__button',
       }),
       events: {
-        submit: submitForm,
+        submit: (evt: Event) => submitForm<UpdatePasswordDataWithConfirmation>(evt, (data) => {
+          changePasswordController.changePassword(data);
+        }),
+      },
+    });
+
+    this.children.backButton = new Button({
+      label: '⬅',
+      type: 'button',
+      class: 'back-button',
+      events: {
+        click: () => router.go('/messenger'),
       },
     });
   }

@@ -6,6 +6,8 @@ import AuthForm from '../../components/AuthForm';
 import FormFields from './containers/FormFields';
 import template from './Login.hbs';
 import submitForm from '../../utils/submitForm';
+import { CreateSessionData } from './api/LoginAPI';
+import loginController from './controllers/LoginController';
 
 export default class LoginPage extends Block {
   initChildren() {
@@ -17,12 +19,14 @@ export default class LoginPage extends Block {
       }),
       link: new Link({
         label: 'Регистрация',
-        href: '/signin',
+        href: '/sign-up',
         class: 'link',
       }),
       formFields: new FormFields(),
       events: {
-        submit: submitForm,
+        submit: (evt) => submitForm<CreateSessionData>(evt, (data) => {
+          loginController.login(data);
+        }),
       },
     });
   }

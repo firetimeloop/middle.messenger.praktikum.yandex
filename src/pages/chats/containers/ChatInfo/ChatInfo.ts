@@ -6,6 +6,9 @@ interface ChatInfoProps {
     lastMessage: string;
     lastMessageDate: string;
     unreadMessagesCount: string;
+    events: {
+      click: (event: Event & { target: HTMLInputElement }) => void;
+    };
   }
 
 export default class ChatInfo extends Block {

@@ -193,6 +193,7 @@
 
 .chat-history__header-menu-button-text {
   margin: 0;
+  color: var(--black);
 }
 
 .chat-history__footer {
@@ -288,4 +289,26 @@
   display: flex;
   width: 100%;
   gap: 10px;
+}
+
+.chat__modal-form {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background: var(--box-shadow-color);
+  top: 0;
+  left: 0;
+}
+
+.chat__modal-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  min-width: 340px;
+  border-radius: 12px;
+  padding: 24px;
 }

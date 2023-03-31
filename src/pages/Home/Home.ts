@@ -6,22 +6,22 @@ export default class HomePage extends Block {
   initChildren() {
     this.children.linkAuth = new Link({
       label: 'Авторизация',
-      href: '/login',
+      href: '/',
       class: 'link',
     });
     this.children.linkSignIn = new Link({
       label: 'Регистрация',
-      href: '/signin',
+      href: '/sign-up',
       class: 'link',
     });
     this.children.linkChats = new Link({
       label: 'Чаты',
-      href: '/chats',
+      href: '/messenger',
       class: 'link',
     });
     this.children.linkSettings = new Link({
       label: 'Настройки пользователя',
-      href: '/user-settings',
+      href: '/settings',
       class: 'link',
     });
     this.children.linkChangePassword = new Link({

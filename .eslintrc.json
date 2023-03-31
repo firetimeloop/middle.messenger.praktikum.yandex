@@ -13,6 +13,7 @@
           "ts": "never"
         }
      ],
+     "class-methods-use-this": "off",
      "no-shadow": "off",
      "@typescript-eslint/no-shadow": ["error"],
      "no-restricted-exports": "off",

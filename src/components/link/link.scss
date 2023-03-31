@@ -5,6 +5,10 @@
   line-height: 11px;
   color: var(--primary-color);
   text-decoration: none;
+  background: none;
+  padding: 0;
+  width: auto;
+  min-height: auto;
 
   &_red {
     color: var(--red-link-color);
