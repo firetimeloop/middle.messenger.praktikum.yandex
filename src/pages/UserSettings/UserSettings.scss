@@ -1,0 +1,232 @@
+@import url("../../styles/colors.scss");
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 340px;
+  align-items: center;
+  background: var(--white);
+  box-shadow: 0 0 6px var(--box-shadow-color);
+  border-radius: 12px;
+  padding: 50px 30px 30px;
+  min-height: 460px;
+}
+
+.auth-form__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.auth-form__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin-top: 48px;
+}
+
+.auth-form__title {
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.auth-form__fields {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+.auth-form__field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
+.auth-form__field-label {
+  font-size: 9px;
+  line-height: 9px;
+  color: var(--form-label-color);
+}
+
+.auth-form__field-input {
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
+  padding: 0;
+  padding-bottom: 7px;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--main-font-color);
+}
+
+.back-button-wrapper {
+  height: 100%;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--back-button-background-color);
+  border-right: 1px solid var(--back-button-border-color);
+}
+
+.back-button {
+  width: 38px;
+  height: 38px;
+  background: var(--primary-color);
+  border: none;
+  color: var(--white);
+  border-radius: 50%;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 510px;
+  background: var(--white);
+  padding: 50px 30px 30px;
+}
+
+.user-form__avatar-input {
+  display: none;
+}
+
+.user-form__avatar {
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  color: var(--avatar-text-color);
+  display: grid;
+}
+
+.user-form__avatar.disabled {
+  display: none;
+}
+
+.user-form__avatar-upload.disabled {
+  display: none;
+}
+
+.user-form__avatar-upload {
+  border-radius: 50%;
+  background: var(--main-background-color);
+  background-size: cover;
+}
+
+.user-form__avatar-background {
+  display: flex;
+  grid-area: 1/1;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 130px;
+  height: 130px;
+}
+
+.user-form__avatar-tooltip {
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 14px;
+  text-align: center;
+  color: var(--white);
+  opacity: 0;
+  background: var(--black);
+  display: flex;
+  grid-area: 1/1;
+  width: 130px;
+  height: 130px;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  border-radius: 50%;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.user-form__title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.user-form__fields {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  flex-grow: 1;
+  min-height: 180px;
+}
+
+.user-form__field {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  border-bottom: 1px solid var(--back-button-border-color);
+  padding: 0;
+  padding-bottom: 10px;
+  justify-content: space-between;
+
+  &_borderless {
+    border-bottom: none;
+  }
+}
+
+.user-form__field-label {
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.user-form__field-input {
+  border: none;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--form-label-color);
+  text-align: right;
+}
+
+.user-form__links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.user-form__button {
+  margin-top: 30px;
+}
+
+.user-form__field-error {
+  color: var(--form-error-color);
+  margin-bottom: 12px;
+  display: none;
+}
