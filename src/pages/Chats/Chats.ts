@@ -97,6 +97,16 @@ export default class ChatsPage extends Block {
                 content: data.message,
                 type: 'message',
               }));
+
+              if (evt.target) {
+                const input: HTMLInputElement | null = (
+                  (evt.target as Element).querySelector('#message')
+                );
+
+                if (input) {
+                  input.value = '';
+                }
+              }
             }
           }),
         },

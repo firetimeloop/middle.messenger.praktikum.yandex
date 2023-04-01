@@ -1,6 +1,6 @@
 import loginAPI, { CreateSessionData } from '../api/LoginAPI';
 import router from '../../../utils/Router';
-import userController from '../../UserSettings/controllers/UserController';
+import userSettingsController from '../../UserSettings/controllers/UserSettingsController';
 
 class LoginController {
   public login(data: CreateSessionData) {
@@ -11,7 +11,7 @@ class LoginController {
           || (res.status === 400 && JSON.parse(res.response).reason === 'User already in system')
         ) {
           router.go('/messenger');
-          userController.getUser();
+          userSettingsController.getUser();
         } else {
           console.log('Something went wrong');
         }

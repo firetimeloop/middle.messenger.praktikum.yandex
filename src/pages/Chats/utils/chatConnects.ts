@@ -1,12 +1,12 @@
 /* eslint camelcase: 0 */
 import ChatInfo from '../containers/ChatInfo';
 import chatsController from '../controllers/ChatsController';
-import userController from '../../UserSettings/controllers/UserController';
 import ChatMessage from '../containers/ChatMessage';
 import getDateString from '../../../utils/getDateString';
 import connect from '../../../utils/connect';
 import store from '../../../utils/Store';
 import Block from '../../../utils/Block';
+import userSettingsController from '../../UserSettings/controllers/UserSettingsController';
 
 type ChatData = {
     title: string;
@@ -35,50 +35,58 @@ export function withChats<T extends Record<string, any>>(Component: typeof Block
             chatsController.getChatToken().then((res) => {
               const { token } = JSON.parse(res.response);
 
-              userController.getUser().then(() => {
+              userSettingsController.getUser().then(() => {
                 const { user: { id: userId }, currentChatId } = store.getState();
 
-                store.set('messages', []);
+                if (userId && currentChatId && token) {
+                  store.set('messages', []);
 
-                const socketUrl = `wss://ya-praktikum.tech/ws/chats/${userId}/${currentChatId}/${token}`;
-                const socket = new WebSocket(socketUrl);
+                  const socketUrlPrefix = 'wss://ya-praktikum.tech/ws/chats/';
 
-                socket.addEventListener('open', () => {
-                  console.log('Соединение установлено');
+                  const socketUrl = `${socketUrlPrefix}${userId}/${currentChatId}/${token}`;
+                  const socket = new WebSocket(socketUrl);
 
-                  socket.send(JSON.stringify({
-                    content: '0',
-                    type: 'get old',
-                  }));
-                });
+                  socket.addEventListener('open', () => {
+                    console.log('Соединение установлено');
 
-                socket.addEventListener('close', (event) => {
-                  if (event.wasClean) {
-                    console.log('Соединение закрыто чисто');
-                  } else {
-                    console.log('Обрыв соединения');
-                  }
+                    socket.send(JSON.stringify({
+                      content: '0',
+                      type: 'get old',
+                    }));
+                  });
 
-                  console.log(`Код: ${event.code} | Причина: ${event.reason}`);
-                });
+                  socket.addEventListener('close', (event) => {
+                    if (event.wasClean) {
+                      console.log('Соединение закрыто чисто');
+                    } else {
+                      console.log('Обрыв соединения');
+                    }
 
-                socket.addEventListener('message', (event) => {
-                  console.log('Получены данные', event.data);
-                  const currentMessages = store.getState()?.messages;
+                    console.log(`Код: ${event.code} | Причина: ${event.reason}`);
+                  });
 
-                  let messages = JSON.parse(event.data);
-                  if (!Array.isArray(messages)) {
-                    messages = [messages];
-                  }
+                  socket.addEventListener('message', (event) => {
+                    console.log('Получены данные', event.data);
+                    const currentMessages = store.getState()?.messages;
 
-                  if (currentMessages) {
-                    store.set('messages', [...currentMessages, ...messages]);
-                    return;
-                  }
-                  store.set('messages', messages);
-                });
+                    try {
+                      let messages = JSON.parse(event.data);
+                      if (!Array.isArray(messages)) {
+                        messages = [messages];
+                      }
 
-                store.set('socket', socket);
+                      if (currentMessages) {
+                        store.set('messages', [...currentMessages, ...messages]);
+                        return;
+                      }
+                      store.set('messages', messages);
+                    } catch (error) {
+                      console.log('Неверное данные сообщения', error);
+                    }
+                  });
+
+                  store.set('socket', socket);
+                }
               });
             });
           },

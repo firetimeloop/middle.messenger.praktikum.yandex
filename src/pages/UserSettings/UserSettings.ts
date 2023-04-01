@@ -6,16 +6,15 @@ import FormFields from './containers/FormFields';
 import Links from './containers/Links';
 import submitForm from '../../utils/submitForm';
 import router from '../../utils/Router';
-import userController from './controllers/UserController';
-import profileController, { ProfileDataWithAvatar } from './controllers/ProfileController';
-import profileAvatarController from './controllers/ProfileAvatarController';
 import { withUserAvatar } from '../../utils/connect';
+// eslint-disable-next-line max-len
+import userSettingsController, { ProfileDataWithAvatar } from './controllers/UserSettingsController';
 
 const SettingsFormWithAvatar = withUserAvatar(SettingsForm as typeof Block);
 export default class UserSettingsPage extends Block {
   constructor() {
     super();
-    userController.getUser();
+    userSettingsController.getUser();
   }
 
   initChildren() {
@@ -29,8 +28,8 @@ export default class UserSettingsPage extends Block {
       }),
       events: {
         submit: (evt: Event) => submitForm<ProfileDataWithAvatar>(evt, (data) => {
-          profileController.changeProfileData(data);
-          profileAvatarController.changeAvatar(data);
+          userSettingsController.changeProfileData(data);
+          userSettingsController.changeAvatar(data);
         }),
       },
     });

@@ -2,7 +2,7 @@ import Block from '../../../../utils/Block';
 import Link from '../../../../components/Link';
 import template from './Links.hbs';
 import Button from '../../../../components/Button';
-import logoutController from '../../controllers/LogoutController';
+import userSettingsController from '../../controllers/UserSettingsController';
 
 export default class Links extends Block {
   initChildren() {
@@ -16,7 +16,7 @@ export default class Links extends Block {
       type: 'button',
       class: 'link link_red',
       events: {
-        click: () => logoutController.logout(),
+        click: () => userSettingsController.logout(),
       },
     });
   }
