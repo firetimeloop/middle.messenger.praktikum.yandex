@@ -1,4 +1,3 @@
-import BaseAPI from '../../../utils/BaseAPI';
 import httpTransport from '../../../utils/HTTPTransport';
 
 export type ProfileData = {
@@ -10,36 +9,25 @@ export type ProfileData = {
     phone: string;
 }
 
-class UserSettingsAPI extends BaseAPI {
+class UserSettingsAPI {
   deleteSession() {
-    return httpTransport.post('/auth/logout', {
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
-    });
+    return httpTransport.post('/auth/logout');
   }
 
   update(data: ProfileData) {
     return httpTransport.put('/user/profile', {
-      data: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
+        data: JSON.stringify(data),
     });
   }
 
   updateAvatar(data: FormData) {
     return httpTransport.put('/user/profile/avatar', {
-      data,
+        data,
     });
   }
 
   request() {
-    return httpTransport.get('/auth/user', {
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
-    });
+    return httpTransport.get('/auth/user');
   }
 }
 

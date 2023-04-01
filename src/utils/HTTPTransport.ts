@@ -1,6 +1,6 @@
 /* eslint-disable */
 type BufferSource = ArrayBufferView | ArrayBuffer;
-type XMLHttpRequestBodyInit = string | Blob | BufferSource | FormData | URLSearchParams;
+type XMLHttpRequestBodyInit = string | Blob | BufferSource | FormData | URLSearchParams ;
 
 enum METHOD {
     GET = 'GET',
@@ -12,8 +12,9 @@ enum METHOD {
 
 type Options = {
     method: METHOD;
-    data?: Document | XMLHttpRequestBodyInit | null | undefined;
+    data?: Document | XMLHttpRequestBodyInit | null | undefined | Record<string, any>;
     headers?: Record<string, string>;
+    isJSON?: boolean;
 };
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
@@ -41,8 +42,17 @@ class HTTPTransport {
     return this._request(url, { ...options, method: METHOD.DELETE });
   }
 
-  private _request(url: string, options: Options = { method: METHOD.GET }): Promise<XMLHttpRequest> {
-    const { method, data, headers } = options;
+  private _request(url: string, options: Options = { 
+    method: METHOD.GET
+  }): Promise<XMLHttpRequest> {
+    const { method, data } = options;
+
+    let headers: Record<string, string>;
+    if (!(data instanceof FormData)) {
+      headers = {
+        'Content-Type': 'application/json; charset=utf-8',
+      };
+    }
 
     const dataForQuery = (data || {}) as Record<string, any>;
 
@@ -61,7 +71,6 @@ class HTTPTransport {
       if (headers) {
         for (const [key, value] of Object.entries(headers)) {
           xhr.setRequestHeader(key, value);
-          // xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
         }
       }
 
@@ -76,7 +85,7 @@ class HTTPTransport {
       if (method === METHOD.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        xhr.send(data as XMLHttpRequestBodyInit);
       }
     });
   }

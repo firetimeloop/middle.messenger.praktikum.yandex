@@ -1,4 +1,3 @@
-import BaseAPI from '../../../utils/BaseAPI';
 import httpTransport from '../../../utils/HTTPTransport';
 
 export type UpdatePasswordData = {
@@ -6,13 +5,10 @@ export type UpdatePasswordData = {
     newPassword: string;
 }
 
-class ChangePasswordAPI extends BaseAPI {
+class ChangePasswordAPI {
   update(data: UpdatePasswordData) {
     return httpTransport.put('/user/password', {
       data: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
     });
   }
 }

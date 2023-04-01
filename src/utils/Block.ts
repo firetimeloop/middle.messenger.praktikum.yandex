@@ -20,16 +20,11 @@ abstract class Block<T extends Record<string, any> = Record<string, any>> {
   public children: Record<string, Block | Block[]>;
 
   private _element: HTMLElement | null = null;
-  // private _meta: { props: any; };
 
   constructor(propsWithChildren: any = {}) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
-
-    // this._meta = {
-    //   props
-    // };
 
     this.children = children;
 

@@ -8,7 +8,7 @@ import router from '../../utils/Router';
 import { UpdatePasswordData } from './api/ChangePasswordAPI';
 import changePasswordController from './controllers/ChangePasswordController';
 
-export type UpdatePasswordDataWithConfirmation = UpdatePasswordData & {newPassword_confirm: string}
+export type UpdatePasswordDataWithConfirmation = UpdatePasswordData & {newPasswordConfirm: string}
 export default class ChangePasswordPage extends Block {
   initChildren() {
     this.children.settingsForm = new SettingsForm({

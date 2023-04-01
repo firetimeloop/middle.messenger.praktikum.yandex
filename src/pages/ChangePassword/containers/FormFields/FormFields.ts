@@ -43,13 +43,13 @@ export default class FormFields extends Block {
     this.children.formFieldPasswordConfirmation = new FormField({
       label: 'Повторите пароль',
       error: 'Неверно указан пароль',
-      name: 'newPassword_confirm',
+      name: 'newPasswordConfirm',
       class: 'user-form__field',
       additionalClass: 'user-form__field_borderless',
       input: new Input({
         label: 'Повторите пароль',
         type: 'password',
-        name: 'newPassword_confirm',
+        name: 'newPasswordConfirm',
         class: 'user-form__field',
         regex: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,40}$',
         events: {

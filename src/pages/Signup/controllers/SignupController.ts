@@ -4,7 +4,7 @@ import router from '../../../utils/Router';
 class SignupController {
   public signup(data: CreateUserData) {
     signupAPI
-      .create(data)
+      .createUser(data)
       .then((res) => {
         const response = JSON.parse(res.response);
         if (res.status === 200) {

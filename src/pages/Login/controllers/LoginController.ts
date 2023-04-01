@@ -5,9 +5,9 @@ import userSettingsController from '../../UserSettings/controllers/UserSettingsC
 class LoginController {
   public login(data: CreateSessionData) {
     loginAPI
-      .create(data)
+      .createSession(data)
       .then((res) => {
-        if ((res.response === 'OK' && res.status === 200)
+        if ((res.status === 200)
           || (res.status === 400 && JSON.parse(res.response).reason === 'User already in system')
         ) {
           router.go('/messenger');

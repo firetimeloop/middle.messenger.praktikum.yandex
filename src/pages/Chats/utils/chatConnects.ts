@@ -18,7 +18,6 @@ type ChatData = {
     };
   }
 
-// TODO хм
 export function withChats<T extends Record<string, any>>(Component: typeof Block) {
   return connect<T>((state) => ({
     chats: (state.chats || []).map(({

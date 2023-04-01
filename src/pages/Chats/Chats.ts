@@ -14,7 +14,7 @@ import ChatInfos from './containers/ChatInfos';
 import { withCurrentTitle } from '../../utils/connect';
 import { withChats, withMessages } from './utils/chatConnects';
 import ChatHistory from './containers/ChatHistory';
-import { UserData } from './api/UserAPI';
+import { UserData } from './api/ChatsAPI';
 import store from '../../utils/Store';
 import ChatMessages from './containers/ChatMessages';
 

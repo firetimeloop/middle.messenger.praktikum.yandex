@@ -1,4 +1,3 @@
-import BaseAPI from '../../../utils/BaseAPI';
 import httpTransport from '../../../utils/HTTPTransport';
 
 export type CreateUserData = {
@@ -10,13 +9,10 @@ export type CreateUserData = {
     password: string;
 }
 
-class SignupAPI extends BaseAPI {
-  create(data: CreateUserData) {
+class SignupAPI {
+  createUser(data: CreateUserData) {
     return httpTransport.post('/auth/signup', {
       data: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
     });
   }
 }
