@@ -19,7 +19,7 @@ type Options = {
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
-class HTTPTransport {
+export class HTTPTransport {
   private _url: string;
 
   constructor(url: string) {

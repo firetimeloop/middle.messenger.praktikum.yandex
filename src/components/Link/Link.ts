@@ -1,6 +1,8 @@
 import Block from '../../utils/Block';
 import template from './Link.hbs';
 
+import './Link.scss';
+
 interface LinkProps {
   label: string;
   href: string;

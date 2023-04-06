@@ -1,9 +1,9 @@
 /* eslint-disable */
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 import EventBus from './EventBus';
 import { isEqual } from './isEqual';
 
-abstract class Block<T extends Record<string, any> = Record<string, any>> {
+class Block<T extends Record<string, any> = Record<string, any>> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',

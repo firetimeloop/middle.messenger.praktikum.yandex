@@ -2,6 +2,8 @@ import Link from '../../components/Link';
 import Block from '../../utils/Block';
 import template from './Home.hbs';
 
+import './Home.scss';
+
 export default class HomePage extends Block {
   initChildren() {
     this.children.linkAuth = new Link({

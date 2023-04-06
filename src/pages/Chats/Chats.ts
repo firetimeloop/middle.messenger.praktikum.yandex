@@ -9,14 +9,15 @@ import submitForm from '../../utils/submitForm';
 import Button from '../../components/Button';
 import router from '../../utils/Router';
 import chatsController from './controllers/ChatsController';
-import { CreateChatData } from './api/ChatsAPI';
+import { CreateChatData, UserData } from './api/ChatsAPI';
 import ChatInfos from './containers/ChatInfos';
 import { withCurrentTitle } from '../../utils/connect';
 import { withChats, withMessages } from './utils/chatConnects';
 import ChatHistory from './containers/ChatHistory';
-import { UserData } from './api/ChatsAPI';
 import store from '../../utils/Store';
 import ChatMessages from './containers/ChatMessages';
+
+import './Chats.scss';
 
 const ChatInfosWithChats = withChats(ChatInfos as typeof Block);
 const ChatMessagesWithMessages = withMessages(ChatMessages as typeof Block);

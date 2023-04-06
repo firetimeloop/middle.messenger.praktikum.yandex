@@ -9,6 +9,8 @@ import submitForm from '../../utils/submitForm';
 import { CreateSessionData } from './api/LoginAPI';
 import loginController from './controllers/LoginController';
 
+import './Login.scss';
+
 export default class LoginPage extends Block {
   initChildren() {
     this.children.authForm = new AuthForm({
