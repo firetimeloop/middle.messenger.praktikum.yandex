@@ -7,6 +7,7 @@ import Links from './containers/Links';
 import submitForm from '../../utils/submitForm';
 import router from '../../utils/Router';
 import { withUserAvatar } from '../../utils/connect';
+// eslint-disable-next-line max-len
 import userSettingsController, { ProfileDataWithAvatar } from './controllers/UserSettingsController';
 
 import './UserSettings.scss';
