@@ -1,8 +1,6 @@
 import validateField from './validateField';
 
-type FormDataEntryValue = string | File;
-
-const submitForm = (evt: Event) => {
+const submitForm = <T extends Record<string, any>>(evt: Event, callback?: (data: T) => void) => {
   evt.preventDefault();
 
   const elements = Array.from(
@@ -21,14 +19,19 @@ const submitForm = (evt: Event) => {
   }
 
   const formData = new FormData(evt.target as HTMLFormElement);
-  const result: Record<string, FormDataEntryValue> = {};
+  const result: T = {} as T;
 
   // eslint-disable-next-line no-restricted-syntax
-  for (const [key, value] of formData.entries()) {
-    result[key] = value;
+  for (const [key, value] of (formData.entries())) {
+    result[key as keyof T] = (value as any);
   }
 
   // eslint-disable-next-line no-console
+  if (callback) {
+    callback(result);
+    return;
+  }
+
   console.log(result);
 };
 

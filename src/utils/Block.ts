@@ -1,8 +1,9 @@
 /* eslint-disable */
 import { nanoid } from 'nanoid';
 import EventBus from './EventBus';
+import { isEqual } from './isEqual';
 
-abstract class Block<T extends Record<string, any> = Record<string, unknown>> {
+abstract class Block<T extends Record<string, any> = Record<string, any>> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -16,19 +17,14 @@ abstract class Block<T extends Record<string, any> = Record<string, unknown>> {
 
   private eventBus: () => EventBus;
 
-  public children: Record<string, Block>;
+  public children: Record<string, Block | Block[]>;
 
   private _element: HTMLElement | null = null;
-  // private _meta: { props: any; };
 
   constructor(propsWithChildren: any = {}) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
-
-    // this._meta = {
-    //   props
-    // };
 
     this.children = children;
 
@@ -44,6 +40,8 @@ abstract class Block<T extends Record<string, any> = Record<string, unknown>> {
   }
 
   protected initChildren() {}
+
+  protected transferPropsToChildren() {}
 
   _getChildrenAndProps(childrenAndProps: any) {
     const props: Record<string, unknown> = {};
@@ -100,7 +98,15 @@ abstract class Block<T extends Record<string, any> = Record<string, unknown>> {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
+    Object.values(this.children).forEach((child) => {
+      if (Array.isArray(child)) {
+        child.forEach((innerChild) => {
+          innerChild.dispatchComponentDidMount()
+        })
+        return;
+      }
+      child.dispatchComponentDidMount()
+    });
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
@@ -110,7 +116,7 @@ abstract class Block<T extends Record<string, any> = Record<string, unknown>> {
   }
 
   protected componentDidUpdate(_oldProps: any, _newProps: any) {
-    return true;
+    return !isEqual(_oldProps, _newProps);
   }
 
   setProps = (nextProps: any) => {
@@ -146,7 +152,17 @@ abstract class Block<T extends Record<string, any> = Record<string, unknown>> {
 
     const contextAndStubs = { ...context };
 
+    Object.entries(this.props).forEach(([key, value]) => {
+      if (Array.isArray(value) && value[0] instanceof Block) {
+        this.children[key] = value;
+      }
+    })
+
     Object.entries(this.children).forEach(([name, component]) => {
+      if (Array.isArray(component)) {
+        contextAndStubs[name] = component.map((componentPart) => `<div data-id="${componentPart.id}"></div>`).join('')
+        return;
+      }
       contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
     });
 
@@ -155,6 +171,21 @@ abstract class Block<T extends Record<string, any> = Record<string, unknown>> {
     fragment.innerHTML = htmlString;
 
     Object.entries(this.children).forEach(([_, component]) => {
+      if (Array.isArray(component)) {
+        component.forEach(componentParts => {
+          const stub = fragment.content.querySelector(`[data-id="${componentParts.id}"]`);
+
+          if (!stub) {
+            return;
+          }
+    
+          componentParts.getElement()?.append(...Array.from(stub.childNodes));
+
+          stub.replaceWith(componentParts.getElement()!);
+        })
+        return;
+      }
+
       const stub = fragment.content.querySelector(`[data-id="${component.id}"]`);
 
       if (!stub) {
@@ -169,7 +200,7 @@ abstract class Block<T extends Record<string, any> = Record<string, unknown>> {
     return fragment.content;
   }
 
-  protected render(): DocumentFragment {
+  render(): DocumentFragment {
     return new DocumentFragment();
   }
 
@@ -209,7 +240,7 @@ abstract class Block<T extends Record<string, any> = Record<string, unknown>> {
     return element;
   }
 
-  _setDisplayStyle(displayValue: 'block' | 'none') {
+  _setDisplayStyle(displayValue: 'block' | 'flex' | 'none') {
     const element = this.getElement();
 
     if (element) {
@@ -217,7 +248,12 @@ abstract class Block<T extends Record<string, any> = Record<string, unknown>> {
     }
   }
 
-  show() {
+  show(isFlex?: boolean) {
+    if (isFlex) {
+      this._setDisplayStyle('flex');
+      return;
+    }
+    
     this._setDisplayStyle('block');
   }
 

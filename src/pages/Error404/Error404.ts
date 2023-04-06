@@ -6,7 +6,7 @@ export default class Error404Page extends Block {
   initChildren() {
     this.children.link = new Link({
       label: 'Назад к чатам',
-      href: '/chats',
+      href: '/messenger',
       class: 'link',
     });
   }

@@ -3,6 +3,23 @@ import FormField from '../../../../components/FormField';
 import Input from '../../../../components/Input';
 import template from './FormFields.hbs';
 import validateField from '../../../../utils/validateField';
+import {
+  withUserEmailValue,
+  withUserLoginValue,
+  withUserFirstNameValue,
+  withUserSecondNameValue,
+  withUserPhoneValue,
+  withUserDisplayNameValue,
+} from '../../../../utils/connect';
+
+const InputAsBlock = Input as typeof Block;
+
+const InputWithEmail = withUserEmailValue(InputAsBlock);
+const InputWithLogin = withUserLoginValue(InputAsBlock);
+const InputWithFirstName = withUserFirstNameValue(InputAsBlock);
+const InputWithSecondName = withUserSecondNameValue(InputAsBlock);
+const InputWithPhone = withUserPhoneValue(InputAsBlock);
+const InputWithDisplayName = withUserDisplayNameValue(InputAsBlock);
 
 export default class FormFields extends Block {
   initChildren() {
@@ -11,12 +28,13 @@ export default class FormFields extends Block {
       name: 'email',
       class: 'user-form__field',
       error: 'Неверно указан email',
-      input: new Input({
+      input: new InputWithEmail({
         label: 'Почта',
         type: 'email',
         name: 'email',
         class: 'user-form__field',
         regex: '^[a-zA-Z0-9-_.]+@[a-zA-Z]+.[a-zA-Z]+$',
+        value: '',
         events: {
           focus: validateField('Неверно указан email'),
           blur: validateField('Неверно указан email'),
@@ -28,7 +46,7 @@ export default class FormFields extends Block {
       name: 'login',
       class: 'user-form__field',
       error: 'Неверно указан логин',
-      input: new Input({
+      input: new InputWithLogin({
         label: 'Логин',
         type: 'text',
         name: 'login',
@@ -45,7 +63,7 @@ export default class FormFields extends Block {
       name: 'first_name',
       error: 'Неверно указано имя',
       class: 'user-form__field',
-      input: new Input({
+      input: new InputWithFirstName({
         label: 'Имя',
         type: 'text',
         name: 'first_name',
@@ -62,7 +80,7 @@ export default class FormFields extends Block {
       name: 'second_name',
       error: 'Неверно указана фамилия',
       class: 'user-form__field',
-      input: new Input({
+      input: new InputWithSecondName({
         label: 'Фамилия',
         type: 'text',
         name: 'second_name',
@@ -79,7 +97,7 @@ export default class FormFields extends Block {
       name: 'display_name',
       error: '',
       class: 'user-form__field',
-      input: new Input({
+      input: new InputWithDisplayName({
         label: 'Имя в чате',
         type: 'text',
         name: 'display_name',
@@ -92,7 +110,7 @@ export default class FormFields extends Block {
       error: 'Неверно указан телефон',
       class: 'user-form__field',
       additionalClass: 'user-form__field_borderless',
-      input: new Input({
+      input: new InputWithPhone({
         label: 'Телефон',
         type: 'text',
         name: 'phone',

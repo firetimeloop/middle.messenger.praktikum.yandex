@@ -1,13 +1,15 @@
 import Block from '../../utils/Block';
 import Button from '../Button';
 import template from './SettingsForm.hbs';
+import { withUserDisplayNameTitle } from '../../utils/connect';
 
 import './SettingsForm.scss';
 
 interface SettingsFormProps {
   avatarDisabled?: string;
+  avatar?: string;
   button: Button;
-  title: string;
+  title?: string;
   links?: Block;
   formFields: Block;
   events?: {
@@ -15,7 +17,7 @@ interface SettingsFormProps {
   };
 }
 
-export default class SettingsForm extends Block {
+class SettingsForm extends Block {
   constructor(props: SettingsFormProps) {
     super(props);
   }
@@ -24,3 +26,5 @@ export default class SettingsForm extends Block {
     return this.compile(template, this.props);
   }
 }
+
+export default withUserDisplayNameTitle(SettingsForm as typeof Block);
