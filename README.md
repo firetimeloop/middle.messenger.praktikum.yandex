@@ -13,6 +13,19 @@
 
 Добавлена CSP для Express, для защиты от XSS и DOS.
 
+Написаны тесты для роутера, компонента, модуля отправки запросов.
+
+Настроена сборка билда с помощью Webpack.
+
+Настроена Docker-сборка приложения.
+
+Проект с Docker-сборкой размещен - https://bbam9ltpkesu7h7lgoug.containers.yandexcloud.net/
+
+Настроен precommit на проект.
+
+Проведите аудит пакетов продакшен сборки (npm audit --production).
+
+
 Макеты дефолтные - https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1
 
 Задеплоен на Netlify - https://astonishing-valkyrie-1a706b.netlify.app/
