@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import proxyquire from 'proxyquire';
 import { expect } from 'chai';
 import sinon from 'sinon';
@@ -22,6 +23,7 @@ describe('Block', () => {
   class ComponentMock extends Block {}
 
   it('should fire init event on initialization', () => {
+    // eslint-disable-next-line no-new
     new ComponentMock({});
 
     expect(eventBusMock.emit.calledWith(Block.EVENTS.INIT)).to.eq(true);

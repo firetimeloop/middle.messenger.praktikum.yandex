@@ -12,6 +12,11 @@ module.exports = {
     extensions: ['.ts', '.js', '.json', '.scss'],
     fallback: { crypto: false }
   },
+  devServer: {
+    historyApiFallback: true,
+    compress: true,
+    port: 9000,
+  },
   plugins: [
     new HtmlWebpackPlugin({
         template: 'src/index.html',

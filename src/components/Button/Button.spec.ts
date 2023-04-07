@@ -4,15 +4,19 @@ import sinon from 'sinon';
 import Button from './Button';
 
 describe('Button', () => {
-  it('should render', () => {
-    new Button({ label: 'Button', type: 'button' });
-  });
-
   it('element should return button', () => {
     const button = new Button({ label: 'Button', type: 'button' });
     const { element } = button;
 
     expect(element).to.be.instanceof(window.HTMLButtonElement);
+  });
+
+  it('element should return button with textContent from label prop', () => {
+    const label = 'Button';
+    const button = new Button({ label, type: 'button' });
+    const { element } = button;
+
+    expect(element?.textContent?.trim()).to.eq(label);
   });
 
   it('element should has attribute display = block after calling show method', () => {

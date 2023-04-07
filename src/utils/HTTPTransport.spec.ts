@@ -1,7 +1,6 @@
 import sinon, { SinonFakeXMLHttpRequest, SinonFakeXMLHttpRequestStatic } from 'sinon';
 import { expect } from 'chai';
 import { HTTPTransport } from './HTTPTransport';
-// import { isEqual } from './isEqual';
 
 describe('HTTPTransport', () => {
   let xhr: SinonFakeXMLHttpRequestStatic;

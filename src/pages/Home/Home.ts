@@ -1,5 +1,8 @@
 import Link from '../../components/Link';
+import Button from '../../components/Button';
 import Block from '../../utils/Block';
+import router from '../../utils/Router';
+
 import template from './Home.hbs';
 
 import './Home.scss';
@@ -11,10 +14,13 @@ export default class HomePage extends Block {
       href: '/',
       class: 'link',
     });
-    this.children.linkSignIn = new Link({
+    this.children.linkSignIn = new Button({
       label: 'Регистрация',
-      href: '/sign-up',
+      type: 'button',
       class: 'link',
+      events: {
+        click: () => router.go('/sign-up'),
+      },
     });
     this.children.linkChats = new Link({
       label: 'Чаты',

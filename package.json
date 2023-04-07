@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "description": "---",
   "scripts": {
-    "dev": "parcel ./src/index.html --port 3000",
-    "build": "node ./node_modules/.bin/webpack",
+    "dev": "webpack serve",
+    "build": "webpack",
     "start": "npm run build && node server.js",
     "check": "npm-run-all lint test",
     "lint": "npm-run-all lint:*",
     "lint:typescript": "tsc --noEmit",
     "lint:eslint": "npx eslint --ext=.ts,.tsx ./ --fix",
-    "lint:style": "npx stylelint **/*.scss",
+    "lint:style": "npx stylelint **/*.scss --fix",
     "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.spec.ts'"
   },
   "repository": {
@@ -56,7 +56,8 @@
     "ts-node": "10.9.1",
     "typescript": "4.8.3",
     "webpack": "5.78.0",
-    "webpack-cli": "5.0.1"
+    "webpack-cli": "5.0.1",
+    "webpack-dev-server": "4.13.2"
   },
   "dependencies": {
     "express": "4.18.1",
