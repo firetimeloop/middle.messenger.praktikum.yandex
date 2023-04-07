@@ -19,7 +19,7 @@
 
 Настроена Docker-сборка приложения.
 
-Проект с Docker-сборкой размещен - https://bbam9ltpkesu7h7lgoug.containers.yandexcloud.net/
+Проект с Docker-сборкой размещен - https://bbamuvtgto1emtiin7po.containers.yandexcloud.net/
 
 Настроен precommit на проект.
 
