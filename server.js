@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(function (req, res, next) {
     res.setHeader(
         'Content-Security-Policy',
-        "default-src 'self'; font-src 'self'; img-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; frame-src 'self'"
+        "default-src 'self'; font-src 'self'; img-src https://ya-praktikum.tech; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; frame-src 'self'; connect-src *"
     );
     
     next();

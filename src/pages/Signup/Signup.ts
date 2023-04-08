@@ -7,6 +7,7 @@ import submitForm from '../../utils/submitForm';
 import { CreateUserData } from './api/SignupAPI';
 import signupController from './controllers/SignupController';
 import router from '../../utils/Router';
+import Link from '../../components/Link/Link';
 
 export default class SigninPage extends Block {
   render() {
@@ -20,12 +21,14 @@ export default class SigninPage extends Block {
         label: 'Зарегистрироваться',
         type: 'submit',
       }),
-      link: new Button({
+      link: new Link({
         label: 'Войти',
-        type: 'button',
         class: 'link',
         events: {
-          click: () => router.go('/'),
+          click: (evt) => {
+            evt.preventDefault();
+            router.go('/')
+          },
         },
       }),
       formFields: new FormFields(),

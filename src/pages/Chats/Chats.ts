@@ -16,6 +16,7 @@ import { withChats, withMessages } from './utils/chatConnects';
 import ChatHistory from './containers/ChatHistory';
 import store from '../../utils/Store';
 import ChatMessages from './containers/ChatMessages';
+import Link from '../../components/Link/Link';
 
 import './Chats.scss';
 
@@ -189,13 +190,14 @@ export default class ChatsPage extends Block {
         }),
       },
     });
-
-    this.children.linkProfile = new Button({
+    this.children.linkProfile = new Link({
       label: 'Профиль >',
-      type: 'button',
       class: 'link',
       events: {
-        click: () => router.go('/settings'),
+        click: (evt) => {
+          evt.preventDefault();
+          router.go('/settings')
+        },
       },
     });
     this.children.buttonOpenCreateChatModal = new Button({
