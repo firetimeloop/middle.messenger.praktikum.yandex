@@ -1,12 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap");
-@import url("../styles/colors.scss");
-@import url("../components/Link/Link.scss");
-@import url("../components/Button/Button.scss");
-@import url("../components/AuthForm/AuthForm.scss");
-@import url("../pages/Chats/Chats.scss");
-@import url("../pages/Home/Home.scss");
-@import url("../pages/Login/Login.scss");
-@import url("../pages/UserSettings/UserSettings.scss");
+:root {
+  --main-font-color: #1e1e1e;
+  --main-background-color: #efefef;
+  --form-label-color: #999;
+  --form-error-color: #ff2f2f;
+  --red-link-color: #f00;
+  --box-shadow-color: rgba(0 0 0 / 14%);
+  --back-button-background-color: #fbfbfb;
+  --back-button-border-color: #eaeaea;
+  --avatar-text-color: #cdcdcd;
+  --primary-color: #3369f3;
+  --black: #000;
+  --white: #fff;
+}
 
 * {
   box-sizing: border-box;

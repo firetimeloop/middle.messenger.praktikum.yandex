@@ -1,9 +1,9 @@
 /* eslint-disable */
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 import EventBus from './EventBus';
 import { isEqual } from './isEqual';
 
-abstract class Block<T extends Record<string, any> = Record<string, any>> {
+class Block<T extends Record<string, any> = Record<string, any>> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -153,7 +153,7 @@ abstract class Block<T extends Record<string, any> = Record<string, any>> {
     const contextAndStubs = { ...context };
 
     Object.entries(this.props).forEach(([key, value]) => {
-      if (Array.isArray(value) && value[0] instanceof Block) {
+      if (Array.isArray(value) && (value[0] instanceof Block || value.length === 0)) {
         this.children[key] = value;
       }
     })

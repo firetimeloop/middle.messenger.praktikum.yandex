@@ -1,5 +1,4 @@
 import Button from '../../components/Button';
-import Link from '../../components/Link';
 import Block from '../../utils/Block';
 import AuthForm from '../../components/AuthForm';
 import template from './Signup.hbs';
@@ -7,6 +6,8 @@ import FormFields from './containers/FormFields';
 import submitForm from '../../utils/submitForm';
 import { CreateUserData } from './api/SignupAPI';
 import signupController from './controllers/SignupController';
+import router from '../../utils/Router';
+import Link from '../../components/Link/Link';
 
 export default class SigninPage extends Block {
   render() {
@@ -22,8 +23,13 @@ export default class SigninPage extends Block {
       }),
       link: new Link({
         label: 'Войти',
-        href: '/',
         class: 'link',
+        events: {
+          click: (evt) => {
+            evt.preventDefault();
+            router.go('/')
+          },
+        },
       }),
       formFields: new FormFields(),
       events: {

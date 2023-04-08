@@ -1,15 +1,22 @@
 import Block from '../../../../utils/Block';
-import Link from '../../../../components/Link';
 import template from './Links.hbs';
 import Button from '../../../../components/Button';
+import Link from '../../../../components/Link/Link';
+import router from '../../../../utils/Router';
+
 import userSettingsController from '../../controllers/UserSettingsController';
 
 export default class Links extends Block {
   initChildren() {
     this.children.linkChangePassword = new Link({
-      href: '/user-change-password',
       label: 'Изменить пароль',
       class: 'link',
+      events: {
+        click: (evt) => {
+          evt.preventDefault();
+          router.go('/user-change-password')
+        },
+      },
     });
     this.children.linkLogout = new Button({
       label: 'Выйти',

@@ -10,6 +10,7 @@ class ChatsController {
       });
   }
 
+  // eslint-disable-next-line
   public createChat(data: CreateChatData, callback: VoidFunction) {
     return chatsAPI
       .create(data)
@@ -22,6 +23,7 @@ class ChatsController {
       });
   }
 
+  // eslint-disable-next-line
   public addUserToChat(data: UserData, callback: VoidFunction) {
     return this.getUserId(data).then((res) => {
       const { currentChatId } = store.getState();
@@ -43,6 +45,7 @@ class ChatsController {
     });
   }
 
+  // eslint-disable-next-line
   public deleteUserToChat(data: UserData, callback: VoidFunction) {
     return this.getUserId(data).then((res) => {
       const { currentChatId } = store.getState();

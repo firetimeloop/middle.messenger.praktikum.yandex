@@ -16,13 +16,13 @@ class UserSettingsAPI {
 
   update(data: ProfileData) {
     return httpTransport.put('/user/profile', {
-        data: JSON.stringify(data),
+      data: JSON.stringify(data),
     });
   }
 
   updateAvatar(data: FormData) {
     return httpTransport.put('/user/profile/avatar', {
-        data,
+      data,
     });
   }
 

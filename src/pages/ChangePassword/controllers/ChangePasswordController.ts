@@ -9,6 +9,7 @@ class ChangePasswordController {
       return;
     }
 
+    // eslint-disable-next-line
     const { newPasswordConfirm, ...preparedData } = data;
 
     changePasswordAPI

@@ -1,6 +1,5 @@
 import Button from '../../components/Button';
 
-import Link from '../../components/Link';
 import Block from '../../utils/Block';
 import AuthForm from '../../components/AuthForm';
 import FormFields from './containers/FormFields';
@@ -8,6 +7,10 @@ import template from './Login.hbs';
 import submitForm from '../../utils/submitForm';
 import { CreateSessionData } from './api/LoginAPI';
 import loginController from './controllers/LoginController';
+import router from '../../utils/Router';
+import Link from '../../components/Link/Link';
+
+import './Login.scss';
 
 export default class LoginPage extends Block {
   initChildren() {
@@ -19,8 +22,13 @@ export default class LoginPage extends Block {
       }),
       link: new Link({
         label: 'Регистрация',
-        href: '/sign-up',
         class: 'link',
+        events: {
+          click: (evt) => {
+            evt.preventDefault();
+            router.go('/sign-up')
+          },
+        },
       }),
       formFields: new FormFields(),
       events: {

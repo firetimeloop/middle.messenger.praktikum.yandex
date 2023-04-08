@@ -10,6 +10,8 @@ import { withUserAvatar } from '../../utils/connect';
 // eslint-disable-next-line max-len
 import userSettingsController, { ProfileDataWithAvatar } from './controllers/UserSettingsController';
 
+import './UserSettings.scss';
+
 const SettingsFormWithAvatar = withUserAvatar(SettingsForm as typeof Block);
 export default class UserSettingsPage extends Block {
   constructor() {
